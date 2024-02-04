@@ -84,3 +84,19 @@ spec:
 
         echo "***** Running nosetests with: $(params.args)"
         nosetests $(params.args)
+---
+apiVersion: tekton.dev/v1beta1
+kind: Task
+metadata:
+  name: flake8
+spec:
+  steps:
+  - name: flake8
+    image: python:3.9-slim
+    command:
+    - flake8
+    args:
+    - "--count"
+    - "--max-complexity=10"
+    - "--max-line-length=127"
+    - "--statistics"
