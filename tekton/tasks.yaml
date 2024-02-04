@@ -91,6 +91,14 @@ metadata:
   name: flake8
 spec:
   steps:
+  - name: install-flake8
+    image: python:3.9-slim
+    command:
+    - sh
+    args:
+    - -c
+    - |
+      pip install flake8
   - name: flake8
     image: python:3.9-slim
     command:
